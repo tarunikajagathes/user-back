@@ -1,6 +1,20 @@
-const {validationResult}=require('express-validator');
+const {validationResult,check}=require('express-validator');
 
-exports.signin=(req,res,next)=>{
+exports.signin=[
+    check('email', 'Invalid Email').isEmail().notEmpty(),
+    check('username', 'Required').notEmpty(),
+    check('password', 'Password Invalid').isLength({
+        min: 9
+    }),
+    check('phone', 'Invalid Number').isLength({
+        min: 10
+    }, {
+        max: 10
+    }).isNumeric(),
+    check('address', 'Invalid Address').isLength({
+        max: 100
+    })
+],(req,res,next)=>{
      const errors=validationResult(req);
     if(!errors.isEmpty()){
         res.status(422).json(errors)
@@ -10,7 +24,12 @@ exports.signin=(req,res,next)=>{
     }
 }
 
-exports.login=(req,res,next)=>{
+exports.login= [
+    check('email', 'Invalid Email').isEmail(),
+    check('password', 'Password Inalid').isLength({
+        min: 9
+    })
+],(req,res,next)=>{
     const errors=validationResult(req);
     if(!errors.isEmpty()){
         res.status(422).json(errors)
