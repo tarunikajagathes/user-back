@@ -7,7 +7,7 @@ const findUser = require('../service/findUser')
 
 exports.siginin = async (req, res) => {
     const password = encrypt(req.body.password)
-    addUser.addUser(req.body.email, req.body.username, password, req.body.phone, req.body.address);
+    addUser.addUser(req.body.email, req.body.username, password, req.body.phone, req.body.role);
     res.status(201).send("added");
 }
 exports.checkUser = async (req, res) => {

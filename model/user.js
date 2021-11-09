@@ -9,6 +9,10 @@ var schema = new mongoose.Schema({
         type: String,
         require: true
     },
+    role:{
+        type:String,
+        required:true
+    },
     password: {
         type:Object,
         require: true

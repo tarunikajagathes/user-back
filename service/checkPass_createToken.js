@@ -8,9 +8,11 @@ exports.check=async(email_u,pass_u)=>{
     try{
         const email=await findUser.find(email_u);
     const pass = crypto.decrypt(email.data[0].password);
+    const role=email.data[0].role;
     if (pass_u == pass) {
         const token = jwt.sign({
-            email_u
+            email_u,
+            role
         }, key);
        return {token:token}
     } else {
