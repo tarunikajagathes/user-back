@@ -15,3 +15,15 @@ exports.edit=(req,res)=>{
         res.send(data);
     }
 }
+
+exports.permission=(req,res,next)=>{
+    const token=req.headers.authorization;
+    const decode=jwt.verify(token,key);
+    const role=decode.role;
+    if(role=="Editor"){
+        next();
+    }
+    else{
+        res.status(403);
+    }
+}
