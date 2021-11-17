@@ -27,7 +27,7 @@ exports.signin=[
 exports.login= [
     check('email', 'Invalid Email').isEmail(),
     check('password', 'Password Inalid').isLength({
-        min: 9
+        min: 6
     })
 ],(req,res,next)=>{
     const errors=validationResult(req);

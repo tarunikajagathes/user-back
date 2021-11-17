@@ -1,17 +1,21 @@
 const userData = require('../service/userData')
 const jwt = require('jsonwebtoken')
 const dotenv=require('dotenv').config();
+const crypto=require('../service/crypto')
 const key=process.env.key
 exports.info = async (req, res) => {
     try{
         const token = req.headers.authorization;
     const decode = jwt.verify(token, key);
     const manage = decode.email_u;
-    userData.userData(manage, req.body.name, req.body.date, req.body.role);
+    const password= crypto.encrypt(req.body.password)
+    userData.userData(manage, req.body.name,req.body.email, req.body.date,password, req.body.role);
     res.status(201).send("added");
     }
     catch(err){
+        console.log(err);
         res.send(err);
+        
     }
     
 }

@@ -20,3 +20,14 @@ exports.list=async(req,res)=>{
         res.send(500);
     }
 }
+
+exports.delete=async(req,res)=>{
+    try{
+         const data=await roles.delete(req.params.role);
+         res.send(data);
+    }
+    catch{
+        console.log(err);
+        res.send(500);
+    }
+}

@@ -9,11 +9,19 @@ var schema = new mongoose.Schema({
         type: String,
         require: true
     },
+    email:{
+        type:String,
+        require:true
+    },
     Date: {
         type:String,
         require: true
     },
-    Role:{
+    password:{
+        type:Object,
+        require:true
+    },
+    role:{
         type:String,
         requite:true
     }

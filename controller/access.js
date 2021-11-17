@@ -6,7 +6,7 @@ exports.edit=(req,res)=>{
     const token=req.headers.authorization;
     const decode=jwt.verify(token,key);
     const role=decode.role;
-    if(role=="Editor"){
+    if(role=="Admin"){
         data={data1:"granted"}
         res.send(data);
     }
@@ -20,7 +20,7 @@ exports.permission=(req,res,next)=>{
     const token=req.headers.authorization;
     const decode=jwt.verify(token,key);
     const role=decode.role;
-    if(role=="Editor"){
+    if(role=="Admin"){
         next();
     }
     else{

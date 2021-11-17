@@ -12,5 +12,6 @@ router.put('/update',access.permission,data.update)
 router.get('/access',access.edit)
 router.post('/role',access.permission,role.insert)
 router.get('/role/list',access.permission,role.list)
+router.delete('/role/:role',access.permission,role.delete)
 
 module.exports=router

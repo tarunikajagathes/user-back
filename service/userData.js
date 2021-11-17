@@ -1,12 +1,14 @@
 const {userData} =require('../model/userData')
 
 
-exports.userData=(manage,name_u,date_u,role_u)=>{
+exports.userData=(manage,name_u,email_u,date_u,pass_u,role_u)=>{
     userData.insertMany({
         Manage_Email:manage,
         Name: name_u,
+        email:email_u,
         Date:date_u,
-        Role: role_u});
+        password:pass_u,
+        role: role_u});
 }
 
 exports.getData=async(manage)=>{
@@ -24,7 +26,6 @@ exports.updateDetails=async(manage,name,value)=>{
 }
 
 exports.getDetails=async(manage,name)=>{
-    
     const data=await userData.find({Name:name});
     return data;
 }
