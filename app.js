@@ -16,7 +16,7 @@ db.once('open', function () {
     console.log("Connected");
 });
 
-
+console.log("Sample");
 
 app.use('/',router)
 app.use('/user',checkToken.auth,route)
